@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* background-color: floralwhite; */
+  background-color: ivory;
+  color: #1E1E1E;
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  position: relative;
+  height: 30vh;
+  background: url('images/NPS-banner.jpg') center no-repeat padding-box #083167;
+}
+
+header h1 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 1rem;
+  color: ivory;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.page-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.error-message {
+    color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+form {
+  margin: 2rem 0;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container {
+  flex: 1;
+  margin-top: 1rem;
+}
+
+.input-container label {
+  display: inline-block;
+  width: 120px;
+  margin-right: 1rem;
+}
+
+.input-container select, input[type=number] {
+  width: 180px;
+  padding: 0.25rem 0.5rem;
+}
+
+input[type="submit"] {
+  margin-top: 3rem;
+  width: 100%;
+  min-height: 60px;
+  font-size: 1.4rem;
+  background-color: slateblue;
+  color: white;
+  border: 0;
+  border-radius: 6px;
+}
+
+#results {
+  margin-top: 4rem;
+}
+
+.parks-list {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+.parks-list li {
+  padding: 1rem;
+  border-bottom: 1px solid lightsteelblue;
+}
+
+.park-address {
+  font-style: italic;
+}
+
+.park-link {
+  text-decoration: none;
+}
+
+.park-link:after {
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+  margin: 0 5px 0 10px;
+}
+
+@media screen and (min-width: 800px) {
+  .form-inputs {
+    flex-direction: row;
+  }
+
+  .input-container label {
+    width: auto;
+  }
+
+  input[type="submit"] {
+    width: 200px;
+  }
+}
