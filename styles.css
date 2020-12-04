@@ -3,8 +3,10 @@
 }
 
 body {
+  /* position: relative; */
+  /* min-height: 100vh; */
   margin: 0;
-  /* background-color: floralwhite; */
+  /* padding-bottom: 100px; */
   background-color: ivory;
   color: #1E1E1E;
   font-family: 'Roboto', sans-serif;
@@ -44,7 +46,12 @@ header h1 {
 }
 
 form {
-  margin: 2rem 0;
+  margin: 4rem 0;
+}
+
+.instructions {
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .form-inputs {
@@ -65,9 +72,18 @@ form {
   margin-right: 1rem;
 }
 
-.input-container select, input[type=number] {
-  width: 180px;
-  padding: 0.25rem 0.5rem;
+#js-search-states, #js-search-results-limit {
+  width: 220px;
+  height: 40px;
+  padding: 1rem;
+  font-size: 18px;
+}
+
+#js-search-states::placeholder {font-size: initial;}
+
+#js-search-results-limit {
+  text-align: center;
+  text-indent: 1rem;
 }
 
 input[type="submit"] {
@@ -82,7 +98,8 @@ input[type="submit"] {
 }
 
 #results {
-  margin-top: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 }
 
 .parks-list {
@@ -107,6 +124,13 @@ input[type="submit"] {
   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
   margin: 0 5px 0 10px;
 }
+
+/* footer {
+  width: 100%;
+  height: 100px;
+  background-color: black;
+  color: white;
+} */
 
 @media screen and (min-width: 800px) {
   .form-inputs {

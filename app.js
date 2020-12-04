@@ -46,29 +46,40 @@ function generateParksListString(parksJSON) {
 function displayParks(parksJSON) {
   $('#results').removeClass('hidden');
   
-  const stateSelected = $('#js-search-state option:selected').html()
-  $('#js-state-name').text(stateSelected);
+  const statesSelected = $('#js-search-states').val() // this will need updating to represent 2-letter state abbreviations as full names
+  $('#js-state-names').text(statesSelected.toUpperCase());
 
   const parksList = generateParksListString(parksJSON);
   $('#js-parks-list').append(parksList);
 }
 
-function formatQueryParameters(params) {
+function cleanUpParams(params) {
+  const newStatesCode = params["stateCode"].replace(/\s/g,''); // strip any whitespace in string containing states
+  params["stateCode"] = newStatesCode;
+  return params;
+}
+
+function formatQueryParameters(params) {;
+  const paramsCleanedUp = cleanUpParams(params);
   const queryItems = Object.keys(params)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+    .map(key => `${encodeURIComponent(key)}=${encodeURI(params[key])}`); // encodeURI (without "Component" allows for the comma to remain after encoding)
   return queryItems.join('&');
 }
 
-function getParks(state, maxResults) {
+function getParks(states, maxResults) {
   const apiKey = `EX5vPnbF6BdSnDqOJ1LzfbtvteCuXigfoC1toC9k`;
   const endpointURL = `https://developer.nps.gov/api/v1/parks`;
   const params = {
     api_key: apiKey,
-    stateCode: state,
+    stateCode: states,
+    // sort: ,
     limit: maxResults
   };
+  
   const queryString = formatQueryParameters(params);
   const url = `${endpointURL}?${queryString}`;
+
+  // console.log(queryString);
 
   fetch(url)
     .then(
@@ -93,10 +104,11 @@ function getParks(state, maxResults) {
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
+    $('#js-error-message').empty();
     $('#js-parks-list').empty();
-    const searchState = $('#js-search-state').val();
+    const searchStates = $('#js-search-states').val();
     const maxResults = $('#js-search-results-limit').val();
-    getParks(searchState, maxResults);
+    getParks(searchStates, maxResults);
   });
 }
 
